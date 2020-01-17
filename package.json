@@ -1,0 +1,19 @@
+{
+  "name": "paw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "paw": "./index.js"
+  },
+  "dependencies": {
+    "inquirer": "^7.0.3",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyoh",
+  "license": "ISC"
+}
