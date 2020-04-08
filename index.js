@@ -6,17 +6,17 @@ const qrcode = require('qrcode-terminal')
 
 inquirer.prompt([
   {
-    type: 'input',
+    type: 'password',
     name: 'website',
     message: 'Which website ?'
   },
   {
-    type: 'input',
+    type: 'password',
     name: 'name',
     message: 'What is your username ?'
   },
   {
-    type: 'input',
+    type: 'password',
     name: 'her',
     message: 'What is her name ?'
   },
