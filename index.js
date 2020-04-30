@@ -6,12 +6,12 @@ const qrcode = require('qrcode-terminal')
 
 inquirer.prompt([
   {
-    type: 'password',
+    type: 'text',
     name: 'website',
     message: 'Which website ?'
   },
   {
-    type: 'password',
+    type: 'text',
     name: 'name',
     message: 'What is your username ?'
   },
@@ -24,19 +24,38 @@ inquirer.prompt([
     type: 'password',
     name: 'password',
     message: 'Private key'
+  },
+  {
+    type: 'confirm',
+    name: 'encode',
+    message: 'Base64 ?',
+    default: true
   }
-]).then(answers => {
-  answers = Buffer.from(answers.website + answers.name + answers.her + answers.password)
+])
+.then(answers => {
+  let password = Buffer.from(answers.website + answers.name + answers.her + answers.password)
 
   let h
 
   h = crypto.createHash('sha1')
-  h.update(answers)
+  h.update(password)
   h = h.digest('hex')
+
+  if (answers.encode) {
+    h = Buffer.from(h).toString('base64')
+  }
 
   console.log('Your password :', h)
 
   qrcode.generate(h, {small: true}, qr => {
 	  console.log(qr)
   })
+
+  setTimeout(() => {
+    console.clear()
+  }, 10000)
+})
+.catch(err => {
+  console.error(err)
+  process.exit()
 })
