@@ -53,6 +53,7 @@ inquirer.prompt([
 
   setTimeout(() => {
     console.clear()
+    process.exit()
   }, 10000)
 })
 .catch(err => {
